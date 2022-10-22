@@ -19,6 +19,9 @@
 
         <!-- TODO: Add Receive Message Activity to the Manifest -->
 
+        <activity
+            android:name=".ReceiveMessageActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

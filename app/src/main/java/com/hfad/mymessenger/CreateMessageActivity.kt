@@ -4,32 +4,40 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.widget.CheckedTextView
+import android.widget.EditText
 import com.hfad.mymessenger.databinding.ActivityCreateMessageBinding
-
 
 class CreateMessageActivity : AppCompatActivity() {
     //Declare the binding variable as a private lateinit var
     private lateinit var binding: ActivityCreateMessageBinding
-
+    private lateinit var mess: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        mess = findViewById(R.id.message)
 
         //TODO: Add a setOnClickListener to each Button using the binding
-
+        binding.sendExplicit.setOnClickListener { _ ->
+            sendMessageToActivity()
+        }
+        binding.sendImplicit.setOnClickListener { _ ->
+            sendMessageToOtherApp()
+        }
     }
 
     //Creates an Explicit Intent to start the ReceiveMessageActivity
     private fun sendMessageToActivity() {
         //TODO: Create an explicit Intent for ReceiveMessageActivity
-
+        val send = Intent(this, ReceiveMessageActivity::class.java)
         // TODO: use putExtra method to attach the string value from the message editText field
         //      and the boolean "isChecked" value from the markUrgent checkbox (use the binding to get this)
-
-
+        val message = mess.text.toString()
+        send.putExtra(MESSAGE, message)
+        send.putExtra(URGENT, binding.markUrgent.isChecked)
         //  TODO: Start the new Activity
+        startActivity(send)
 
     }
 
@@ -46,6 +54,6 @@ class CreateMessageActivity : AppCompatActivity() {
     companion object {
         const val MESSAGE = "MESSAGE"
         //TODO: Add a constant, URGENT, representing the data label "URGENT"
-
+        const val  URGENT = "true"
     }
 }
