@@ -19,7 +19,7 @@ class ReceiveMessageActivity : AppCompatActivity() {
         //The Activity property 'intent' represents the particular intent that started this Activity
         var message = intent?.extras?.getString(CreateMessageActivity.MESSAGE).toString()
 
-        //TODO: Add an exclamation mark to the TextView if the intent boolean data "URGENT" is true
+        // Add an exclamation mark to the TextView if the intent boolean data "URGENT" is true
         var urgent = intent?.extras?.getBoolean(CreateMessageActivity.URGENT)?:false
         if (urgent){
             binding.message.text = message.uppercase()
