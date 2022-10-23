@@ -22,7 +22,7 @@ class ReceiveMessageActivity : AppCompatActivity() {
         // Add an exclamation mark to the TextView if the intent boolean data "URGENT" is true
         var urgent = intent?.extras?.getBoolean(CreateMessageActivity.URGENT)?:false
         if (urgent){
-            binding.message.text = message.uppercase()
+            binding.message.text = message.uppercase() + '!'
         }else{
             binding.message.text = message
         }
