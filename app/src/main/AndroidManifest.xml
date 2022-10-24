@@ -16,8 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ReceiveMessageActivity"
+            android:exported="false">
 
-        <!-- TODO: Add Receive Message Activity to the Manifest -->
+        </activity>
+
 
     </application>
 
