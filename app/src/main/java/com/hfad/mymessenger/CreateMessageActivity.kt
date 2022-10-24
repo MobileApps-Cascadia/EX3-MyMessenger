@@ -4,20 +4,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.widget.CheckedTextView
+import android.widget.EditText
 import com.hfad.mymessenger.databinding.ActivityCreateMessageBinding
 
 
 class CreateMessageActivity : AppCompatActivity() {
     //Declare the binding variable as a private lateinit var
     private lateinit var binding: ActivityCreateMessageBinding
-
+    private lateinit var msg: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        //TODO: Add a setOnClickListener to each Button using the binding
+        msg = findViewById(R.id.message)
+        binding.sendExplicit.setOnClickListener { sendMessageToActivity() }
+        binding.sendImplicit.setOnClickListener { sendMessageToOtherApp() }
 
     }
 
