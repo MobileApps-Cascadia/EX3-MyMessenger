@@ -25,14 +25,12 @@ class CreateMessageActivity : AppCompatActivity() {
 
     //Creates an Explicit Intent to start the ReceiveMessageActivity
     private fun sendMessageToActivity() {
-        //TODO: Create an explicit Intent for ReceiveMessageActivity
+        val receivedMessageIntent = Intent(this, ReceiveMessageActivity::class.java)
+        val message = msg.text.toString()
+        receivedMessageIntent.putExtra(MESSAGE, message)
+        receivedMessageIntent.putExtra(URGENT, binding.markUrgent.isChecked)
 
-        // TODO: use putExtra method to attach the string value from the message editText field
-        //      and the boolean "isChecked" value from the markUrgent checkbox (use the binding to get this)
-
-
-        //  TODO: Start the new Activity
-
+        startActivity(receivedMessageIntent)
     }
 
     //Creates an IMPLICIT intent, adds the EditText's message as a String, and sends it to a "Chooser" window for the user to pick
@@ -47,7 +45,7 @@ class CreateMessageActivity : AppCompatActivity() {
     //Reference this data label in the message receiver class using CreateMessageActivity.MESSAGE
     companion object {
         const val MESSAGE = "MESSAGE"
-        //TODO: Add a constant, URGENT, representing the data label "URGENT"
+        const val URGENT = "URGENT"
 
     }
 }
