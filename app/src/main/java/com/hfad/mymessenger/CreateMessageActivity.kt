@@ -37,8 +37,9 @@ class CreateMessageActivity : AppCompatActivity() {
     fun sendMessageToOtherApp() {
         val dataIntent = Intent(Intent.ACTION_SEND)
         dataIntent.type = "text/plain"
-        //TODO: use putExtra method with the label "Intent.EXTRA_TEXT" to attach the user's message to the intent
-        //  and send it to a "Chooser" window for the user to see it with the different apps
+        val message = msg.text.toString()
+        dataIntent.putExtra(Intent.EXTRA_TEXT, message)
+        startActivity(dataIntent)
 
     }
 
